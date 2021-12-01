@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+
+
+{%block content%}
+ <h2>List of my to do list</h2>
+        <a href="{%url 'todo_add'%}"> Add</a>
+        <table>
+          <tr>
+            <th>title</th>
+              <th>description</th>
+              <th>is_completed</th>
+              <th>date_created</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+         {%for task in object_list%}
+          <tr>
+              <td><a href="{% url 'detail' task.pk%}">{{task.title}}</a></td>
+
+
+               <td>{{task.description }}</td>
+
+                    {%if task.is_completed%}
+                           <td>  done</td>
+                        {%else%}
+                              <td>  todo</td>
+                     {%endif%}
+
+              <td>{{task.date_created}}</td>
+               <td> <a href="{%url 'update' task.pk%}">Update</a></td>
+               <td><a href="{%url 'delete' task.pk%}">Delete</a></td>
+          </tr>
+            {%endfor%}
+        </table>
+
+{%endblock content%}

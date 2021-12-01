@@ -1,0 +1,15 @@
+{%extends 'base.html'%}
+{%block content%}
+        <p>Title:{{object.title}}</p>
+                <p><h2>description:</h2>{{object.description}}</p>
+        {%if object.is_completed %}
+            <p>it's done</p>
+        {%else%}
+        <p>not yet</p>
+                {%endif%}
+        <p>created: {{object.date_created}}</p>
+
+        <a  href="{%url 'update' object.pk%}"> Update</a>
+        <a href="{%url 'delete' object.pk%}">Delete</a>
+
+{%endblock content%}
